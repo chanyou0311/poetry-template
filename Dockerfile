@@ -12,7 +12,6 @@ RUN pip install -r requirements.txt
 FROM python:3.10.1-slim as dev
 ENV PYTHONUNBUFFERED=1
 WORKDIR /app
-RUN apt-get update && apt-get install -y default-jre
 COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 COPY --from=builder /app/requirements-dev.txt requirements-dev.txt
 RUN pip install -r requirements-dev.txt
